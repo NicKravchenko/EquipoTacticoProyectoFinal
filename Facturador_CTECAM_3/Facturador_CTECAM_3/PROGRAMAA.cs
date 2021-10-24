@@ -31,7 +31,7 @@ namespace Facturador_CTECAM_3
         {
             InitializeComponent();
             dateTimePicker1.Value = DateTime.Today;
-            //getComboBoxTipo();
+            getComboBoxTipo();
         }
         public void GetNUMandNCF()
         {
@@ -74,7 +74,6 @@ namespace Facturador_CTECAM_3
             }
             TableFacturasPerFormat();
         }
-        /*
         public void getComboBoxTipo()
         {
             var fillcombobox = db.NCFs.ToList();
@@ -82,7 +81,7 @@ namespace Facturador_CTECAM_3
             TipoFacturacomboBox1.DisplayMember = "NCF_TYPEDESCRIPTION";
             TipoFacturacomboBox1.DataSource = fillcombobox;
         }
-        */
+
         public void TableFacturasPerFormat()
         {
             var FacturasToList = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura && a.TIPO_FACTURA == Typefactura).ToList();
