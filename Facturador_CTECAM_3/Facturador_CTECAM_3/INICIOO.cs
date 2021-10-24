@@ -32,19 +32,24 @@ public partial class INICIOO : Form
 
     public static string TABLE_FACTURA = (@"CREATE TABLE [dbo].[FACTURAS] (  [ID]  INT IDENTITY (1,1) NOT NULL, [USUARIO_CREADOR_FACTURA]  VARCHAR (MAX) NOT NULL, [FORMATO_FACTURA]  VARCHAR (MAX) NOT NULL, [NUMERO_FACTURA]  VARCHAR (MAX) NOT NULL,  [TIPO_FACTURA] VARCHAR (MAX) NOT NULL,  [NCF_FACTURA] VARCHAR (MAX) NULL,  [FECHA_FACTURA] VARCHAR (MAX) NOT NULL,  [COMPANIA_RECEPTOR]  VARCHAR (MAX) NULL,  [RNC_RECEPTOR] VARCHAR (MAX) NULL,  [PERSONA_ESPECIFICA_RECEPTOR] VARCHAR (MAX) NULL,  [ASUNTO_FACTURA] VARCHAR (MAX) NULL,  [DESCRIPCION_GENERAL_FACTURA]   VARCHAR (MAX) NULL,   [DESCRIPCION_DESGLOZADA_FACTURA]   VARCHAR (MAX) NULL, [SUBTOTAL_FACTURA] FLOAT (53)  NULL,  [ITBIS_FACTURA] FLOAT (53)  NULL,  [TOTAL_FACTURA] FLOAT (53)  NULL,  PRIMARY KEY CLUSTERED ([ID] ASC))");
     public static string TABLE_USER = (@"CREATE TABLE [dbo].[USER_REGISTER] ([ID] INT IDENTITY (1,1) NOT NULL, [Username] VARCHAR(MAX) NOT NULL, [Password] VARCHAR(MAX) NOT NULL, PRIMARY KEY CLUSTERED ([ID] ASC))");
-        public static string TABLE_NCF = (@"SET IDENTITY_INSERT [dbo].[NCF] ON
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (1, N'01', N'Crédito Fiscal')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (2, N'02', N'Consumidor Final')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (3, N'03', N'Nota de Debito')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (4, N'04', N'Nota de Credito')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (5, N'11', N'Comprobante de Compras')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (6, N'12', N'Registro Unico de Ingresos')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (7, N'13', N'Gastos Menores')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (8, N'14', N'Regimen Especial')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (9, N'15', N'Gubernamental')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (10, N'16', N'Exportaciones')
-INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (11, N'17', N'Pagos al Exterior')
-SET IDENTITY_INSERT [dbo].[NCF] OFF");
+        public static string TABLE_NCF = (@"CREATE TABLE [dbo].[NCF] (
+        [Id]                  INT           IDENTITY (1, 1) NOT NULL,
+        [NCF_TYPENUMBER]      VARCHAR (10)  NOT NULL,
+        [NCF_TYPEDESCRIPTION] VARCHAR (MAX) NOT NULL,
+        PRIMARY KEY CLUSTERED ([Id] ASC));");
+        public static string INSERT_NCF = (@"SET IDENTITY_INSERT [dbo].[NCF] ON
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (1, N'01', N'Crédito Fiscal')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (2, N'02', N'Consumidor Final')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (3, N'03', N'Nota de Debito')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (4, N'04', N'Nota de Credito')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (5, N'11', N'Comprobante de Compras')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (6, N'12', N'Registro Unico de Ingresos')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (7, N'13', N'Gastos Menores')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (8, N'14', N'Regimen Especial')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (9, N'15', N'Gubernamental')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (10, N'16', N'Exportaciones')
+        INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (11, N'17', N'Pagos al Exterior')
+        SET IDENTITY_INSERT [dbo].[NCF] OFF");
         public static string conStr = @"packet size=4096;integrated security=SSPI;" + @"Server=localhost\SQLEXPRESS;persist security info=False;" + "initial catalog=FACTURACTECAM4";
         public static string conStr2 = @"Server=localhost\SQLEXPRESS;" +
                                         "Trusted_Connection=yes;" +
@@ -166,6 +171,7 @@ SET IDENTITY_INSERT [dbo].[NCF] OFF");
         var command2 = new SqlCommand(TABLE_FACTURA, conn);
         var command3 = new SqlCommand(TABLE_USER, conn);
         var command4 = new SqlCommand(TABLE_NCF, conn);
+        var command5 = new SqlCommand(INSERT_NCF, conn);
 
             GetListOfDBNames1(connectionString2, hostname);
 
@@ -181,6 +187,7 @@ SET IDENTITY_INSERT [dbo].[NCF] OFF");
                     command2.ExecuteNonQuery();
                     command3.ExecuteNonQuery();
                     command4.ExecuteNonQuery();
+                    command5.ExecuteNonQuery();
                     MessageBox.Show("SE HA CREADO LA BASE DE DATOS", "MyProgram",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -248,7 +255,7 @@ SET IDENTITY_INSERT [dbo].[NCF] OFF");
     {
         newusername = NewUsernameTextBox.Text;
         newpassword = NewPassWordTextBox.Text;
-        if (NewUsernameTextBox.Text == ConfirmNewPWtextBox.Text)
+        if (NewPassWordTextBox.Text == ConfirmNewPWtextBox.Text)
             USER_REGISTER();
         else
             MessageBox.Show("La contraseña no coincide.");
