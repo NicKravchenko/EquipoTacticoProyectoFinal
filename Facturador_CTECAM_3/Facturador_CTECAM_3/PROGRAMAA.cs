@@ -27,16 +27,19 @@ namespace Facturador_CTECAM_3
         public static string[] columnasGridView = { "ID", "CREADOR", "FORMATO", "NUMERO", "TIPO", "NCF", "FECHA", "COMPAÑIA", "RNC COMPAÑIA", "PERSONA", "ASUNTO", "GENERAL", "DESGLOZADA", "SUBTOTAL", "ITBIS", "ITBIS -30%", "TOTAL", "TOTAL FINAL" };
         public static FACTURA factura;
         public static FACTURACTECAM_Entities db = new FACTURACTECAM_Entities();
+
         public PROGRAMAA()
         {
             InitializeComponent();
             dateTimePicker1.Value = DateTime.Today;
             getComboBoxTipo();
         }
+
         public void GetNUMandNCF()
         {
             if (CTECAMcheckBox.Checked)
                 Formatfactura = CTECAMcheckBox.Text;
+
             else
                 Formatfactura = MarcoPerezcheckBox.Text;
 
@@ -46,17 +49,21 @@ namespace Facturador_CTECAM_3
 
             var numberfactura = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura & a.TIPO_FACTURA == Typefactura).Select(a => a.NUMERO_FACTURA).ToList();
             var numberfactura2 = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura).Select(a => a.NUMERO_FACTURA).ToList();
+            
             if (numberfactura2.Count > 0)
             {
                 var numeroFacturaRetrieve = numberfactura2.Last();
                 numfacturaincremento = numeroFacturaRetrieve.Split('-');
                 int increaseone = Convert.ToInt32(numfacturaincremento[0]) + 1;
                 numfacturaincremento[0] = Convert.ToString(increaseone);
+
                 if (increaseone < 10)
                     FacturaNumberlabel.Text = "0" + numfacturaincremento[0] + "-" + numfacturaincremento[1];
+
                 else
                     FacturaNumberlabel.Text = numfacturaincremento[0] + "-" + (DateTime.Today.Year.ToString()).Substring(2);
             }
+
             else
                 FacturaNumberlabel.Text = "01-" + (DateTime.Today.Year.ToString()).Substring(2);
             if (numberfactura.Count > 0)
@@ -71,12 +78,14 @@ namespace Facturador_CTECAM_3
                 string finalncf3 = ncfincremento[0] + (new string('0', ncfincremento[1].Length - ncf2.Length) + ncf2);
                 NCFlabel.Text = finalncf3;
             }
+
             else
             {
                
                 NCFlabel.Text = "B" + TipoFacturacomboBox1.SelectedValue + "00000001";
                 MessageBox.Show("No hay registros");
             }
+
             TableFacturasPerFormat();
         }
        
@@ -93,10 +102,12 @@ namespace Facturador_CTECAM_3
             var FacturasToList = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura && a.TIPO_FACTURA == Typefactura).ToList();
 
             dataGridView1.DataSource = FacturasToList;
+
             for (int i = 0; i < columnasGridView.Length; i++)
             {
                 dataGridView1.Columns[i].HeaderText = columnasGridView[i];
             }
+
             dataGridView1.AutoResizeColumns();
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[1].Visible = false;
@@ -107,6 +118,7 @@ namespace Facturador_CTECAM_3
         {
             string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\FACTURA CTECAM EJEMPLO.docx");
+            
             Document WordFactura = new Microsoft.Office.Interop.Word.Application().Documents.Open(resourcesFolderPath);
 
             WordFactura.Bookmarks[8].Range.Text = factura.NUMERO_FACTURA; //numero   
@@ -131,16 +143,21 @@ namespace Facturador_CTECAM_3
             SaveWindow.FileName = ($"Factura CTECAM {factura.NUMERO_FACTURA}-{factura.COMPANIA_RECEPTOR}");
             SaveWindow.ShowDialog();
             SaveWindow.DefaultExt = ".docx";
+
             WordFactura.SaveAs2(SaveWindow.FileName);
             WordFactura.Close();
+
             SaveWindow.FileOk += SaveWindow_FileOk;
+
             MessageBox.Show($"EXITO! Factura {factura.NUMERO_FACTURA} de {TIPOfacTura[0]} guardada.");
         }
+
         static void SaveWindow_FileOk(object sender, CancelEventArgs e)
         {
             OpenDocument();
             SaveWindow.AddExtension = true;
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             bool subtotaltrue = double.TryParse(textBox1.Text, out double subtotal);
@@ -152,7 +169,6 @@ namespace Facturador_CTECAM_3
         }
         public void GetValuesFactura()
         {
-
             factura = new FACTURA
             {
                 USUARIO_CREADOR_FACTURA = INICIOO.username,
@@ -173,14 +189,16 @@ namespace Facturador_CTECAM_3
                 TOTAL_FACTURA = Convert.ToDouble(TOTALlabel.Text),
                 TOTAL_FINAL = Convert.ToDouble(TotalFinallabel.Text)
             };
+
             db.FACTURAS.Add(factura);
             db.SaveChanges();
-
         }
+
         private void SelectTypebutton_Click(object sender, EventArgs e)
         {
             if (CTECAMcheckBox.Checked)
                 Formatfactura = CTECAMcheckBox.Text;
+
             else
                 Formatfactura = MarcoPerezcheckBox.Text;
 
@@ -192,6 +210,7 @@ namespace Facturador_CTECAM_3
             dataGridView1.Enabled = true;
 
         }
+
         private void CTECAMcheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (CTECAMcheckBox.Checked)
@@ -203,6 +222,7 @@ namespace Facturador_CTECAM_3
             if (MarcoPerezcheckBox.Checked)
                 CTECAMcheckBox.Checked = false;
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             GetValuesFactura();
@@ -222,6 +242,5 @@ namespace Facturador_CTECAM_3
             TotalFinallabel.Text = Convert.ToString(subtotal + (Convert.ToDouble(ITBISmin30label.Text)));
         }
     }
-
 }
 
