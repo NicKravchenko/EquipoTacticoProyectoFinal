@@ -48,3 +48,16 @@ C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Fa
 C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.pdb
 C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.INICIOO.resources
 C:\Users\Nikita\OneDrive - INTEC\MyProjects\EquipoTacticoProyectoFinal\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.INICIOO.resources
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\bin\Debug\Facturador_CTECAM_3.exe.config
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\bin\Debug\Facturador_CTECAM_3.exe
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\bin\Debug\Facturador_CTECAM_3.pdb
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\bin\Debug\EntityFramework.dll
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\bin\Debug\EntityFramework.xml
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.csproj.AssemblyReference.cache
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.INICIOO.resources
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.Properties.Resources.resources
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.csproj.GenerateResource.cache
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.csproj.CoreCompileInputs.cache
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.csproj.CopyComplete
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.exe
+C:\Users\olive\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.pdb

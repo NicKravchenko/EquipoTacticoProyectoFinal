@@ -81,7 +81,7 @@ namespace Facturador_CTECAM_3
             this.MarcoPerezcheckBox.Location = new System.Drawing.Point(19, 72);
             this.MarcoPerezcheckBox.Name = "MarcoPerezcheckBox";
             this.MarcoPerezcheckBox.Size = new System.Drawing.Size(123, 23);
-            this.MarcoPerezcheckBox.TabIndex = 2;
+            this.MarcoPerezcheckBox.TabIndex = 3;
             this.MarcoPerezcheckBox.Text = "Marco Perez";
             this.MarcoPerezcheckBox.UseVisualStyleBackColor = true;
             this.MarcoPerezcheckBox.CheckedChanged += new System.EventHandler(this.MarcoPerezcheckBox_CheckedChanged);
@@ -93,7 +93,7 @@ namespace Facturador_CTECAM_3
             this.CTECAMcheckBox.Location = new System.Drawing.Point(19, 39);
             this.CTECAMcheckBox.Name = "CTECAMcheckBox";
             this.CTECAMcheckBox.Size = new System.Drawing.Size(93, 23);
-            this.CTECAMcheckBox.TabIndex = 3;
+            this.CTECAMcheckBox.TabIndex = 2;
             this.CTECAMcheckBox.Text = "CTECAM";
             this.CTECAMcheckBox.UseVisualStyleBackColor = true;
             this.CTECAMcheckBox.CheckedChanged += new System.EventHandler(this.CTECAMcheckBox_CheckedChanged);
@@ -146,7 +146,7 @@ namespace Facturador_CTECAM_3
             this.TipoFacturacomboBox1.Location = new System.Drawing.Point(186, 34);
             this.TipoFacturacomboBox1.Name = "TipoFacturacomboBox1";
             this.TipoFacturacomboBox1.Size = new System.Drawing.Size(203, 28);
-            this.TipoFacturacomboBox1.TabIndex = 9;
+            this.TipoFacturacomboBox1.TabIndex = 0;
             this.TipoFacturacomboBox1.Text = "Seleccionar tipo...";
             // 
             // label11
@@ -165,7 +165,7 @@ namespace Facturador_CTECAM_3
             this.SelectTypebutton.Location = new System.Drawing.Point(186, 70);
             this.SelectTypebutton.Name = "SelectTypebutton";
             this.SelectTypebutton.Size = new System.Drawing.Size(204, 29);
-            this.SelectTypebutton.TabIndex = 5;
+            this.SelectTypebutton.TabIndex = 1;
             this.SelectTypebutton.Text = "Seleccionar";
             this.SelectTypebutton.UseVisualStyleBackColor = true;
             this.SelectTypebutton.Click += new System.EventHandler(this.SelectTypebutton_Click);
@@ -243,7 +243,7 @@ namespace Facturador_CTECAM_3
             this.button1.Location = new System.Drawing.Point(193, 519);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 32);
-            this.button1.TabIndex = 62;
+            this.button1.TabIndex = 10;
             this.button1.Text = "GENERAR FACTURA";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
@@ -254,7 +254,7 @@ namespace Facturador_CTECAM_3
             this.textBox1.Location = new System.Drawing.Point(191, 363);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(161, 22);
-            this.textBox1.TabIndex = 61;
+            this.textBox1.TabIndex = 9;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // DetailsDescriptionTextBox1
@@ -266,7 +266,7 @@ namespace Facturador_CTECAM_3
             this.DetailsDescriptionTextBox1.Location = new System.Drawing.Point(192, 272);
             this.DetailsDescriptionTextBox1.Name = "DetailsDescriptionTextBox1";
             this.DetailsDescriptionTextBox1.Size = new System.Drawing.Size(198, 74);
-            this.DetailsDescriptionTextBox1.TabIndex = 60;
+            this.DetailsDescriptionTextBox1.TabIndex = 8;
             this.DetailsDescriptionTextBox1.Text = "";
             // 
             // label19
@@ -285,7 +285,7 @@ namespace Facturador_CTECAM_3
             this.GeneralDescriptiontextBox.Location = new System.Drawing.Point(191, 237);
             this.GeneralDescriptiontextBox.Name = "GeneralDescriptiontextBox";
             this.GeneralDescriptiontextBox.Size = new System.Drawing.Size(198, 22);
-            this.GeneralDescriptiontextBox.TabIndex = 58;
+            this.GeneralDescriptiontextBox.TabIndex = 7;
             // 
             // label17
             // 
@@ -313,7 +313,7 @@ namespace Facturador_CTECAM_3
             this.PersonFromCompanytextBox.Location = new System.Drawing.Point(191, 164);
             this.PersonFromCompanytextBox.Name = "PersonFromCompanytextBox";
             this.PersonFromCompanytextBox.Size = new System.Drawing.Size(198, 22);
-            this.PersonFromCompanytextBox.TabIndex = 55;
+            this.PersonFromCompanytextBox.TabIndex = 5;
             // 
             // SubjecttextBox
             // 
@@ -321,7 +321,7 @@ namespace Facturador_CTECAM_3
             this.SubjecttextBox.Location = new System.Drawing.Point(191, 201);
             this.SubjecttextBox.Name = "SubjecttextBox";
             this.SubjecttextBox.Size = new System.Drawing.Size(198, 22);
-            this.SubjecttextBox.TabIndex = 54;
+            this.SubjecttextBox.TabIndex = 6;
             // 
             // dateTimePicker1
             // 
@@ -331,7 +331,7 @@ namespace Facturador_CTECAM_3
             this.dateTimePicker1.MinDate = new System.DateTime(2000, 12, 25, 23, 59, 59, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(197, 22);
-            this.dateTimePicker1.TabIndex = 53;
+            this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.Value = new System.DateTime(2021, 7, 27, 12, 11, 38, 0);
             // 
             // FacturaNumberlabel
@@ -341,7 +341,7 @@ namespace Facturador_CTECAM_3
             this.FacturaNumberlabel.Location = new System.Drawing.Point(188, 15);
             this.FacturaNumberlabel.Name = "FacturaNumberlabel";
             this.FacturaNumberlabel.Size = new System.Drawing.Size(41, 16);
-            this.FacturaNumberlabel.TabIndex = 52;
+            this.FacturaNumberlabel.TabIndex = 0;
             this.FacturaNumberlabel.Text = "00-YY";
             // 
             // label16
@@ -401,7 +401,7 @@ namespace Facturador_CTECAM_3
             this.NCFlabel.Location = new System.Drawing.Point(186, 41);
             this.NCFlabel.Name = "NCFlabel";
             this.NCFlabel.Size = new System.Drawing.Size(85, 16);
-            this.NCFlabel.TabIndex = 46;
+            this.NCFlabel.TabIndex = 1;
             this.NCFlabel.Text = "B0100000001";
             // 
             // label9
@@ -490,7 +490,7 @@ namespace Facturador_CTECAM_3
             this.CompaniatextBox.Location = new System.Drawing.Point(191, 103);
             this.CompaniatextBox.Name = "CompaniatextBox";
             this.CompaniatextBox.Size = new System.Drawing.Size(198, 22);
-            this.CompaniatextBox.TabIndex = 37;
+            this.CompaniatextBox.TabIndex = 3;
             // 
             // RNCtextBox
             // 
@@ -498,7 +498,7 @@ namespace Facturador_CTECAM_3
             this.RNCtextBox.Location = new System.Drawing.Point(191, 132);
             this.RNCtextBox.Name = "RNCtextBox";
             this.RNCtextBox.Size = new System.Drawing.Size(198, 22);
-            this.RNCtextBox.TabIndex = 36;
+            this.RNCtextBox.TabIndex = 4;
             // 
             // dataGridView1
             // 
