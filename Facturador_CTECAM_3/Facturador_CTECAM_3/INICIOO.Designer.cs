@@ -72,7 +72,6 @@ namespace Facturador_CTECAM_3
             this.PassWordtextBox.PasswordChar = '*';
             this.PassWordtextBox.Size = new System.Drawing.Size(184, 20);
             this.PassWordtextBox.TabIndex = 2;
-            this.PassWordtextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // UsuariotextBox
             // 
@@ -82,7 +81,6 @@ namespace Facturador_CTECAM_3
             this.UsuariotextBox.Name = "UsuariotextBox";
             this.UsuariotextBox.Size = new System.Drawing.Size(184, 20);
             this.UsuariotextBox.TabIndex = 1;
-            this.UsuariotextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label1
             // 
@@ -162,7 +160,6 @@ namespace Facturador_CTECAM_3
             this.UserLoginContainer.TabIndex = 5;
             this.UserLoginContainer.Text = "toolStripContainer1";
             this.UserLoginContainer.TopToolStripPanelVisible = false;
-            this.UserLoginContainer.Click += new System.EventHandler(this.toolStripContainer1_Click);
             // 
             // CreateAccountContainer
             // 
@@ -293,7 +290,6 @@ namespace Facturador_CTECAM_3
             this.Name = "INICIOO";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.UserLoginContainer.ContentPanel.ResumeLayout(false);
             this.UserLoginContainer.ContentPanel.PerformLayout();

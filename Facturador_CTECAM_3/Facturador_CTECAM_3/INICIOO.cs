@@ -27,7 +27,6 @@ namespace Facturador_CTECAM_3
             TestForServer(@"localhost\SQLEXPRESS", 1433);
             Get_Script();
             InitializeComponent();
-
         }
 
         public static string TABLE_FACTURA = (@"CREATE TABLE [dbo].[FACTURAS] (
@@ -82,15 +81,19 @@ namespace Facturador_CTECAM_3
         public static string resourceName;
         public static string newusername;
         public static string newpassword;
+
         public static List<string> lstDBName = new List<string>();
 
         public static bool TestForServer(string address, int port)
         {
 
             int timeout = 500;
+
             if (ConfigurationManager.AppSettings["RemoteTestTimeout"] != null)
                 timeout = int.Parse(ConfigurationManager.AppSettings["RemoteTestTimeout"]);
+
             var result = false;
+
             try
             {
                 using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
@@ -103,12 +106,14 @@ namespace Facturador_CTECAM_3
             }
             catch { return false; }
         }
+
         public static string GetDbCreationQuery()
         {
             string dbName = "FACTURADOR_DB";
             string query = "CREATE DATABASE " + dbName + ";";
             return query;
         }
+
         public static List<string> GetListOfDBNames1(string connection)
         {
             using (SqlConnection sqlConn = new SqlConnection(connection))
@@ -124,16 +129,20 @@ namespace Facturador_CTECAM_3
             }
             return lstDBName;
         }
+
         public static Stream GetEmbeddedResourceStream(string resourceName)
         {
             return Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
         }
+
         public static void User_LOGIN()
         {
             System.Data.SqlClient.SqlConnection sqlConnection2 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
 
             SqlCommand cmd2 = new SqlCommand();
+
             string v = $"SELECT * FROM user_register WHERE [Username]='" + username + "' AND [Password]='" + password + "'";
+
             cmd2.CommandType = System.Data.CommandType.Text;
             cmd2.CommandText = v;
             cmd2.Connection = sqlConnection2;
@@ -149,11 +158,13 @@ namespace Facturador_CTECAM_3
                 PROGRAMAA settingsForm = new PROGRAMAA();
                 settingsForm.Show();
             }
+
             else
             {
                 MessageBox.Show("Credenciales invalidas");
             }
         }
+
         public static void USER_REGISTER()
         {
             System.Data.SqlClient.SqlConnection sqlConnection1 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
@@ -168,8 +179,10 @@ namespace Facturador_CTECAM_3
             sqlConnection1.Open();
             cmd.ExecuteNonQuery();
             sqlConnection1.Close();
-            MessageBox.Show("Agregado!");
+
+            MessageBox.Show("Usuario agregado!");
         }
+
         public static void Get_Script()
         {
             if (!TestForServer(@"localhost\SQLEXPRESS", 1433))
@@ -179,6 +192,7 @@ namespace Facturador_CTECAM_3
                 string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
                 resourceName = "SQL2019_SSEI_Expr.exe";
                 System.Diagnostics.Process.Start(resourcesFolderPath);
+
                 while (!TestForServer(@"localhost\SQLEXPRESS", 1433))
                 {
                     MessageBox.Show("Instalando...");
@@ -187,9 +201,12 @@ namespace Facturador_CTECAM_3
             }
             string connectionString = conStr;
             string connectionString2 = conStr2;
+
             var conn2 = new SqlConnection(connectionString2);
             var conn = new SqlConnection(connectionString);
+
             var query = GetDbCreationQuery();
+
             var command = new SqlCommand(query, conn2);
             var command2 = new SqlCommand(TABLE_FACTURA, conn);
             var command3 = new SqlCommand(TABLE_USER, conn);
@@ -207,19 +224,22 @@ namespace Facturador_CTECAM_3
                     conn2.Close();
 
                     conn.Open();
+
                     command2.ExecuteNonQuery();
                     command3.ExecuteNonQuery();
                     command4.ExecuteNonQuery();
                     command5.ExecuteNonQuery();
+
                     MessageBox.Show("SE HA CREADO LA BASE DE DATOS", "MyProgram",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
             finally
             {
                 if ((conn.State == ConnectionState.Open))
@@ -228,10 +248,7 @@ namespace Facturador_CTECAM_3
                 }
             }
         }
-        private void Form2_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void INCIARbutton_Click(object sender, EventArgs e)
         {
@@ -239,21 +256,6 @@ namespace Facturador_CTECAM_3
             password = PassWordtextBox.Text;
             User_LOGIN();
             this.Hide();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripContainer1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -282,9 +284,8 @@ namespace Facturador_CTECAM_3
                 USER_REGISTER();
             else
                 MessageBox.Show("La contraseña no coincide.");
-
-
         }
+
         private void Closebutton_Click(object sender, EventArgs e)
         {
             Application.Exit();
