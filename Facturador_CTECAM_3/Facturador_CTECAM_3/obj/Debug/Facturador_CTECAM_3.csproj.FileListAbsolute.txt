@@ -47,3 +47,4 @@ C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Fa
 C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.exe
 C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.pdb
 C:\Users\DELL\Documents\GitHub\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.INICIOO.resources
+C:\Users\Nikita\OneDrive - INTEC\MyProjects\EquipoTacticoProyectoFinal\EquipoTacticoProyectoFinal\Facturador_CTECAM_3\Facturador_CTECAM_3\obj\Debug\Facturador_CTECAM_3.INICIOO.resources

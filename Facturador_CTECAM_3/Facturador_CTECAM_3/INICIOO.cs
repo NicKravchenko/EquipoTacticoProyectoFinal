@@ -174,10 +174,15 @@ namespace Facturador_CTECAM_3
         {
             if (!TestForServer(@"localhost\SQLEXPRESS", 1433))
             {
+
                 string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
                 string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
                 resourceName = "SQL2019_SSEI_Expr.exe";
                 System.Diagnostics.Process.Start(resourcesFolderPath);
+                while (!TestForServer(@"localhost\SQLEXPRESS", 1433))
+                {
+                    MessageBox.Show("Instalando...");
+                }
                 MessageBox.Show("Install COMPLETED!");
             }
             string connectionString = conStr;
