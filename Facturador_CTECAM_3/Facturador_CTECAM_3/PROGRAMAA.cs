@@ -45,19 +45,24 @@ namespace Facturador_CTECAM_3
             Typefactura = Convert.ToString(TipoFacturacomboBox1.SelectedValue);
 
             var numberfactura = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura & a.TIPO_FACTURA == Typefactura).Select(a => a.NUMERO_FACTURA).ToList();
-
-            if (numberfactura.Count > 0)
+            var numberfactura2 = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura).Select(a => a.NUMERO_FACTURA).ToList();
+            if (numberfactura2.Count > 0)
             {
-                var numeroFacturaRetrieve = numberfactura.Last();
-                var ncfNCF = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura & a.TIPO_FACTURA == Typefactura).Select(a => a.NCF_FACTURA).ToList();
-                var NCFRetrieve = ncfNCF.Last();
+                var numeroFacturaRetrieve = numberfactura2.Last();
                 numfacturaincremento = numeroFacturaRetrieve.Split('-');
                 int increaseone = Convert.ToInt32(numfacturaincremento[0]) + 1;
                 numfacturaincremento[0] = Convert.ToString(increaseone);
                 if (increaseone < 10)
                     FacturaNumberlabel.Text = "0" + numfacturaincremento[0] + "-" + numfacturaincremento[1];
                 else
-                    FacturaNumberlabel.Text = numfacturaincremento[0] + "-" + numfacturaincremento[1];
+                    FacturaNumberlabel.Text = numfacturaincremento[0] + "-" + (DateTime.Today.Year.ToString()).Substring(2);
+            }
+            else
+                FacturaNumberlabel.Text = "01-" + (DateTime.Today.Year.ToString()).Substring(2);
+            if (numberfactura.Count > 0)
+            {
+                var ncfNCF = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura & a.TIPO_FACTURA == Typefactura).Select(a => a.NCF_FACTURA).ToList();
+                var NCFRetrieve = ncfNCF.Last();
                 string ncf = Convert.ToString(NCFRetrieve).Insert(3, "-");
                 ncfincremento = ncf.Split('-');
                 int ncfincrease = Convert.ToInt32(ncfincremento[1]);
@@ -68,7 +73,7 @@ namespace Facturador_CTECAM_3
             }
             else
             {
-                FacturaNumberlabel.Text = "01-" + (DateTime.Today.Year.ToString()).Substring(2);
+               
                 NCFlabel.Text = "B" + TipoFacturacomboBox1.SelectedValue + "00000001";
                 MessageBox.Show("No hay registros");
             }
