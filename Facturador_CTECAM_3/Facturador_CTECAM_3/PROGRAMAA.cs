@@ -102,7 +102,7 @@ namespace Facturador_CTECAM_3
         {
             string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\FACTURA CTECAM EJEMPLO.docx");
-            Document WordFactura = new Microsoft.Office.Interop.Word.Application().Documents.Open(@"C:\Users\DELL\Downloads\FACTURA CTECAM EJEMPLO.docx");
+            Document WordFactura = new Microsoft.Office.Interop.Word.Application().Documents.Open(resourcesFolderPath);
 
             WordFactura.Bookmarks[8].Range.Text = factura.NUMERO_FACTURA; //numero   
             WordFactura.Bookmarks[7].Range.Text = factura.NCF_FACTURA; //ncf

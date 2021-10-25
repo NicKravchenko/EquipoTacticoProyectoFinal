@@ -18,17 +18,17 @@ using System.Globalization;
 using System.Diagnostics;
 
 namespace Facturador_CTECAM_3
-{ 
-public partial class INICIOO : Form
 {
-    public INICIOO()
+    public partial class INICIOO : Form
     {
+        public INICIOO()
+        {
             PCname = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
             TestForServer(@"localhost\SQLEXPRESS", 1433);
             Get_Script();
             InitializeComponent();
-           
-    }
+
+        }
 
         public static string TABLE_FACTURA = (@"CREATE TABLE [dbo].[FACTURAS] (
     [ID]                             INT           IDENTITY (1, 1) NOT NULL,
@@ -51,7 +51,7 @@ public partial class INICIOO : Form
     [TOTAL_FINAL]                    FLOAT (53)    NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );");
-    public static string TABLE_USER = (@"CREATE TABLE [dbo].[USER_REGISTER] ([ID] INT IDENTITY (1,1) NOT NULL, [Username] VARCHAR(MAX) NOT NULL, [Password] VARCHAR(MAX) NOT NULL, PRIMARY KEY CLUSTERED ([ID] ASC))");
+        public static string TABLE_USER = (@"CREATE TABLE [dbo].[USER_REGISTER] ([ID] INT IDENTITY (1,1) NOT NULL, [Username] VARCHAR(MAX) NOT NULL, [Password] VARCHAR(MAX) NOT NULL, PRIMARY KEY CLUSTERED ([ID] ASC))");
         public static string TABLE_NCF = (@"CREATE TABLE [dbo].[NCF] (
         [Id]                  INT           IDENTITY (1, 1) NOT NULL,
         [NCF_TYPENUMBER]      VARCHAR (10)  NOT NULL,
@@ -78,11 +78,11 @@ public partial class INICIOO : Form
                                         "Connection timeout=30";//"packet size=4096;integrated security=SSPI;" + "data source=\"(local)\";" + "initial catalog=master";
         public static string PCname;
         public static string username;
-    public static string password;
+        public static string password;
         public static string resourceName;
         public static string newusername;
-    public static string newpassword;
-    public static List<string> lstDBName = new List<string>();
+        public static string newpassword;
+        public static List<string> lstDBName = new List<string>();
 
         public static bool TestForServer(string address, int port)
         {
@@ -104,26 +104,26 @@ public partial class INICIOO : Form
             catch { return false; }
         }
         public static string GetDbCreationQuery()
-    {
-        string dbName = "FACTURADOR_DB";
-        string query = "CREATE DATABASE " + dbName + ";";
-        return query;
-    }
-    public static List<string> GetListOfDBNames1(string connection)
-    {
-        using (SqlConnection sqlConn = new SqlConnection(connection))
         {
-            sqlConn.Open();
-            DataTable tblDatabases = sqlConn.GetSchema("Databases");
-            sqlConn.Close();
-
-            foreach (DataRow row in tblDatabases.Rows)
-            {
-                lstDBName.Add(row["database_name"].ToString());
-            }
+            string dbName = "FACTURADOR_DB";
+            string query = "CREATE DATABASE " + dbName + ";";
+            return query;
         }
-        return lstDBName;
-    }
+        public static List<string> GetListOfDBNames1(string connection)
+        {
+            using (SqlConnection sqlConn = new SqlConnection(connection))
+            {
+                sqlConn.Open();
+                DataTable tblDatabases = sqlConn.GetSchema("Databases");
+                sqlConn.Close();
+
+                foreach (DataRow row in tblDatabases.Rows)
+                {
+                    lstDBName.Add(row["database_name"].ToString());
+                }
+            }
+            return lstDBName;
+        }
         public static Stream GetEmbeddedResourceStream(string resourceName)
         {
             return Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
@@ -154,43 +154,42 @@ public partial class INICIOO : Form
                 MessageBox.Show("Credenciales invalidas");
             }
         }
-    public static void USER_REGISTER()
-    {
-        System.Data.SqlClient.SqlConnection sqlConnection1 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
+        public static void USER_REGISTER()
+        {
+            System.Data.SqlClient.SqlConnection sqlConnection1 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
 
-        System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-        cmd.CommandType = System.Data.CommandType.Text;
-        string v = $"INSERT INTO[dbo].[USER_REGISTER] ([Username], [Password]) VALUES ('" + newusername + "', '" + newpassword + "')";
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+            cmd.CommandType = System.Data.CommandType.Text;
+            string v = $"INSERT INTO[dbo].[USER_REGISTER] ([Username], [Password]) VALUES ('" + newusername + "', '" + newpassword + "')";
 
-        cmd.CommandText = v;
-        cmd.Connection = sqlConnection1;
+            cmd.CommandText = v;
+            cmd.Connection = sqlConnection1;
 
-        sqlConnection1.Open();
-        cmd.ExecuteNonQuery();
-        sqlConnection1.Close();
-        MessageBox.Show("Agregado!");
-    }
-    public static void Get_Script()
-        { 
-    //{
-    //        if (!TestForServer(@"SQLEXPRESS", 1433))
-    //        {
-    //            string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-    //            string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
-    //            resourceName = "SQL2019_SSEI_Expr.exe";
-    //            System.Diagnostics.Process.Start(resourcesFolderPath);
-    //            MessageBox.Show("Install COMPLETED!");
-    //        }
-                string connectionString = conStr;
-        string connectionString2 = conStr2;
-        var conn2 = new SqlConnection(connectionString2);
-        var conn = new SqlConnection(connectionString);
-        var query = GetDbCreationQuery();
-        var command = new SqlCommand(query, conn2);
-        var command2 = new SqlCommand(TABLE_FACTURA, conn);
-        var command3 = new SqlCommand(TABLE_USER, conn);
-        var command4 = new SqlCommand(TABLE_NCF, conn);
-        var command5 = new SqlCommand(INSERT_NCF, conn);
+            sqlConnection1.Open();
+            cmd.ExecuteNonQuery();
+            sqlConnection1.Close();
+            MessageBox.Show("Agregado!");
+        }
+        public static void Get_Script()
+        {
+            if (!TestForServer(@"localhost\SQLEXPRESS", 1433))
+            {
+                string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+                string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
+                resourceName = "SQL2019_SSEI_Expr.exe";
+                System.Diagnostics.Process.Start(resourcesFolderPath);
+                MessageBox.Show("Install COMPLETED!");
+            }
+            string connectionString = conStr;
+            string connectionString2 = conStr2;
+            var conn2 = new SqlConnection(connectionString2);
+            var conn = new SqlConnection(connectionString);
+            var query = GetDbCreationQuery();
+            var command = new SqlCommand(query, conn2);
+            var command2 = new SqlCommand(TABLE_FACTURA, conn);
+            var command3 = new SqlCommand(TABLE_USER, conn);
+            var command4 = new SqlCommand(TABLE_NCF, conn);
+            var command5 = new SqlCommand(INSERT_NCF, conn);
 
             GetListOfDBNames1(connectionString2);
 
@@ -223,63 +222,67 @@ public partial class INICIOO : Form
                     conn.Close();
                 }
             }
-    }
-    private void Form2_Load(object sender, EventArgs e)
-    {
-
-    }
-
-    private void INCIARbutton_Click(object sender, EventArgs e)
-    {
-        username = UsuariotextBox.Text;
-        password = PassWordtextBox.Text;
-        User_LOGIN();
-        this.Hide();
-    }
-
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void textBox2_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void toolStripContainer1_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void button2_Click(object sender, EventArgs e)
-    {
-        if (!CreateAccountContainer.Visible)
-        {
-            CreateAccountContainer.Visible = true;
-            UserLoginContainer.Visible = false;
-            INCIARbutton.Visible = false;
-            button2.Text = "REGRESAR";
         }
-        else
+        private void Form2_Load(object sender, EventArgs e)
         {
-            CreateAccountContainer.Visible = false;
-            UserLoginContainer.Visible = true;
-            INCIARbutton.Visible = true;
-            button2.Text = "REGISTRAR USUARIO";
+
+        }
+
+        private void INCIARbutton_Click(object sender, EventArgs e)
+        {
+            username = UsuariotextBox.Text;
+            password = PassWordtextBox.Text;
+            User_LOGIN();
+            this.Hide();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!CreateAccountContainer.Visible)
+            {
+                CreateAccountContainer.Visible = true;
+                UserLoginContainer.Visible = false;
+                INCIARbutton.Visible = false;
+                button2.Text = "REGRESAR";
+            }
+            else
+            {
+                CreateAccountContainer.Visible = false;
+                UserLoginContainer.Visible = true;
+                INCIARbutton.Visible = true;
+                button2.Text = "REGISTRAR USUARIO";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            newusername = NewUsernameTextBox.Text;
+            newpassword = NewPassWordTextBox.Text;
+            if (NewPassWordTextBox.Text == ConfirmNewPWtextBox.Text)
+                USER_REGISTER();
+            else
+                MessageBox.Show("La contraseña no coincide.");
+
+
+        }
+        private void Closebutton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
-
-    private void button1_Click(object sender, EventArgs e)
-    {
-        newusername = NewUsernameTextBox.Text;
-        newpassword = NewPassWordTextBox.Text;
-        if (NewPassWordTextBox.Text == ConfirmNewPWtextBox.Text)
-            USER_REGISTER();
-        else
-            MessageBox.Show("La contraseña no coincide.");
-
-
-    }
-}
 }

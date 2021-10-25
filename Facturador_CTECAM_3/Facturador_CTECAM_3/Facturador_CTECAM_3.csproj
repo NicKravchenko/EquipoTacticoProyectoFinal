@@ -101,6 +101,9 @@
     <Compile Include="USER_REGISTER.cs">
       <DependentUpon>FACTURACTECAM.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="INICIOO.resx">
+      <DependentUpon>INICIOO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
