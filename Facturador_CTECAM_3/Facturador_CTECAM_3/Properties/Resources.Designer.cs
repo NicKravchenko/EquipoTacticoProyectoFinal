@@ -63,9 +63,9 @@ namespace Facturador_CTECAM_3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] FACTURA_CTECAM_EJEMPLO {
+        public static byte[] FacturaEmoty {
             get {
-                object obj = ResourceManager.GetObject("FACTURA_CTECAM_EJEMPLO", resourceCulture);
+                object obj = ResourceManager.GetObject("FacturaEmoty", resourceCulture);
                 return ((byte[])(obj));
             }
         }

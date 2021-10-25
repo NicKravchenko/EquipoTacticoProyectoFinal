@@ -117,25 +117,25 @@ namespace Facturador_CTECAM_3
         public static void OpenDocument()
         {
             string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\FACTURA CTECAM EJEMPLO.docx");
-            
+            string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\FacturaEmoty.docx"); //FACTURA CTECAM EJEMPLO.docx
+
             Document WordFactura = new Microsoft.Office.Interop.Word.Application().Documents.Open(resourcesFolderPath);
 
             WordFactura.Bookmarks[8].Range.Text = factura.NUMERO_FACTURA; //numero   
             WordFactura.Bookmarks[7].Range.Text = factura.NCF_FACTURA; //ncf
             WordFactura.Bookmarks[4].Range.Text = (factura.FECHA_FACTURA.ToShortDateString()); //fecha
             WordFactura.Bookmarks[2].Range.Text = factura.COMPANIA_RECEPTOR;//para
-            WordFactura.Bookmarks[11].Range.Text = Convert.ToString(factura.RNC_RECEPTOR);//RNC para
+            WordFactura.Bookmarks[10].Range.Text = Convert.ToString(factura.RNC_RECEPTOR);//RNC para
             WordFactura.Bookmarks[9].Range.Text = factura.PERSONA_ESPECIFICA_RECEPTOR;//persona directa
             WordFactura.Bookmarks[1].Range.Text = factura.ASUNTO_FACTURA;//Asunto
-            WordFactura.Bookmarks[14].Range.Text = factura.DESCRIPCION_GENERAL_FACTURA;//Titulo Descripcion
+            WordFactura.Bookmarks[13].Range.Text = factura.DESCRIPCION_GENERAL_FACTURA;//Titulo Descripcion
             WordFactura.Bookmarks[3].Range.Text = factura.DESCRIPCION_DESGLOZADA_FACTURA;//Desglose
+            WordFactura.Bookmarks[11].Range.Text = ($"{(factura.SUBTOTAL_FACTURA):C2}");//Subtotal
             WordFactura.Bookmarks[12].Range.Text = ($"{(factura.SUBTOTAL_FACTURA):C2}");//Subtotal
-            WordFactura.Bookmarks[13].Range.Text = ($"{(factura.SUBTOTAL_FACTURA):C2}");//Subtotal
             WordFactura.Bookmarks[5].Range.Text = Convert.ToString(factura.ITBIS_FACTURA);//ITBIS
-            WordFactura.Bookmarks[15].Range.Text = Convert.ToString(factura.TOTAL_FACTURA);//TOTAL
+            WordFactura.Bookmarks[14].Range.Text = Convert.ToString(factura.TOTAL_FACTURA);//TOTAL
             WordFactura.Bookmarks[6].Range.Text = Convert.ToString(factura.ITBIS_MIN30_FACTURA);//-30%ITBIS
-            WordFactura.Bookmarks[16].Range.Text = Convert.ToString(factura.TOTAL_FINAL);//TOTAL FINAL
+            WordFactura.Bookmarks[15].Range.Text = Convert.ToString(factura.TOTAL_FINAL);//TOTAL FINAL
 
 
             SaveWindow = new SaveFileDialog();

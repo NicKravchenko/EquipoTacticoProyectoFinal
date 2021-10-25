@@ -127,12 +127,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\FACTURA CTECAM EJEMPLO.docx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\FacturaEmoty.docx" />
     <None Include="Resources\SQL2019-SSEI-Expr.exe" />
   </ItemGroup>
   <ItemGroup>

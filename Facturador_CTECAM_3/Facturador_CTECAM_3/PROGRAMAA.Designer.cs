@@ -80,9 +80,9 @@ namespace Facturador_CTECAM_3
             this.MarcoPerezcheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MarcoPerezcheckBox.Location = new System.Drawing.Point(19, 72);
             this.MarcoPerezcheckBox.Name = "MarcoPerezcheckBox";
-            this.MarcoPerezcheckBox.Size = new System.Drawing.Size(123, 23);
+            this.MarcoPerezcheckBox.Size = new System.Drawing.Size(142, 23);
             this.MarcoPerezcheckBox.TabIndex = 3;
-            this.MarcoPerezcheckBox.Text = "Marco Perez";
+            this.MarcoPerezcheckBox.Text = "Equipo Táctico";
             this.MarcoPerezcheckBox.UseVisualStyleBackColor = true;
             this.MarcoPerezcheckBox.CheckedChanged += new System.EventHandler(this.MarcoPerezcheckBox_CheckedChanged);
             // 
@@ -92,9 +92,9 @@ namespace Facturador_CTECAM_3
             this.CTECAMcheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CTECAMcheckBox.Location = new System.Drawing.Point(19, 39);
             this.CTECAMcheckBox.Name = "CTECAMcheckBox";
-            this.CTECAMcheckBox.Size = new System.Drawing.Size(93, 23);
+            this.CTECAMcheckBox.Size = new System.Drawing.Size(71, 23);
             this.CTECAMcheckBox.TabIndex = 2;
-            this.CTECAMcheckBox.Text = "CTECAM";
+            this.CTECAMcheckBox.Text = "INTEC";
             this.CTECAMcheckBox.UseVisualStyleBackColor = true;
             this.CTECAMcheckBox.CheckedChanged += new System.EventHandler(this.CTECAMcheckBox_CheckedChanged);
             // 

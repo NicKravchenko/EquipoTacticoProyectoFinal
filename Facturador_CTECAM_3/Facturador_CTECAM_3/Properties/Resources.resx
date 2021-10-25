@@ -118,8 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FACTURA_CTECAM_EJEMPLO" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FACTURA CTECAM EJEMPLO.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="FacturaEmoty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FacturaEmoty.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="SQL2019_SSEI_Expr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SQL2019-SSEI-Expr.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
