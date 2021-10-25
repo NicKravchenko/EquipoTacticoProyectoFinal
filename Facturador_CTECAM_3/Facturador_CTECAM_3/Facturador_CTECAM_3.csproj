@@ -104,6 +104,9 @@
     <EmbeddedResource Include="INICIOO.resx">
       <DependentUpon>INICIOO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PROGRAMAA.resx">
+      <DependentUpon>PROGRAMAA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
