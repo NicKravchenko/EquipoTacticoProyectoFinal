@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FACTURADOR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="FACTURAS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="USUARIO_CREADOR_FACTURA" Type="varchar(max)" Nullable="false" />
+    <Property Name="FORMATO_FACTURA" Type="varchar(max)" Nullable="false" />
+    <Property Name="NUMERO_FACTURA" Type="varchar(max)" Nullable="false" />
+    <Property Name="TIPO_FACTURA" Type="varchar(max)" Nullable="false" />
+    <Property Name="NCF_FACTURA" Type="varchar(max)" />
+    <Property Name="FECHA_FACTURA" Type="datetime" Nullable="false" />
+    <Property Name="COMPANIA_RECEPTOR" Type="varchar(max)" />
+    <Property Name="RNC_RECEPTOR" Type="bigint" />
+    <Property Name="PERSONA_ESPECIFICA_RECEPTOR" Type="varchar(max)" />
+    <Property Name="ASUNTO_FACTURA" Type="varchar(max)" />
+    <Property Name="DESCRIPCION_GENERAL_FACTURA" Type="varchar(max)" />
+    <Property Name="DESCRIPCION_DESGLOZADA_FACTURA" Type="varchar(max)" />
+    <Property Name="SUBTOTAL_FACTURA" Type="float" />
+    <Property Name="ITBIS_FACTURA" Type="float" />
+    <Property Name="ITBIS_MIN30_FACTURA" Type="float" />
+    <Property Name="TOTAL_FACTURA" Type="float" />
+    <Property Name="TOTAL_FINAL" Type="float" />
+  </EntityType>
+  <EntityType Name="NCF">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NCF_TYPENUMBER" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NCF_TYPEDESCRIPTION" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_REGISTER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FACTURADOR_DBModelStoreContainer">
+    <EntitySet Name="FACTURAS" EntityType="Self.FACTURAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NCF" EntityType="Self.NCF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_REGISTER" EntityType="Self.USER_REGISTER" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

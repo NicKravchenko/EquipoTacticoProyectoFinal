@@ -29,8 +29,8 @@ namespace Facturador_CTECAM_3
         public string DESCRIPCION_DESGLOZADA_FACTURA { get; set; }
         public Nullable<double> SUBTOTAL_FACTURA { get; set; }
         public Nullable<double> ITBIS_FACTURA { get; set; }
-        public Nullable<double> ITBIS_MIN30_FACTURA { get; set; }
         public Nullable<double> TOTAL_FACTURA { get; set; }
+        public Nullable<double> ITBIS_MIN30_FACTURA { get; set; }
         public Nullable<double> TOTAL_FINAL { get; set; }
     }
 }

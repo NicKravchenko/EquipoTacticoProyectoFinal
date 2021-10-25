@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FACTURADOR_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FACTURAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO_CREADOR_FACTURA" Type="varchar(max)" Nullable="false" />
+          <Property Name="FORMATO_FACTURA" Type="varchar(max)" Nullable="false" />
+          <Property Name="NUMERO_FACTURA" Type="varchar(max)" Nullable="false" />
+          <Property Name="TIPO_FACTURA" Type="varchar(max)" Nullable="false" />
+          <Property Name="NCF_FACTURA" Type="varchar(max)" />
+          <Property Name="FECHA_FACTURA" Type="datetime" Nullable="false" />
+          <Property Name="COMPANIA_RECEPTOR" Type="varchar(max)" />
+          <Property Name="RNC_RECEPTOR" Type="bigint" />
+          <Property Name="PERSONA_ESPECIFICA_RECEPTOR" Type="varchar(max)" />
+          <Property Name="ASUNTO_FACTURA" Type="varchar(max)" />
+          <Property Name="DESCRIPCION_GENERAL_FACTURA" Type="varchar(max)" />
+          <Property Name="DESCRIPCION_DESGLOZADA_FACTURA" Type="varchar(max)" />
+          <Property Name="SUBTOTAL_FACTURA" Type="float" />
+          <Property Name="ITBIS_FACTURA" Type="float" />
+          <Property Name="ITBIS_MIN30_FACTURA" Type="float" />
+          <Property Name="TOTAL_FACTURA" Type="float" />
+          <Property Name="TOTAL_FINAL" Type="float" />
+        </EntityType>
+        <EntityType Name="NCF">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NCF_TYPENUMBER" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NCF_TYPEDESCRIPTION" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_REGISTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar(max)" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FACTURADOR_DBModelStoreContainer">
+          <EntitySet Name="FACTURAS" EntityType="Self.FACTURAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NCF" EntityType="Self.NCF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_REGISTER" EntityType="Self.USER_REGISTER" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FACTURADOR_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FACTURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO_CREADOR_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FORMATO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NUMERO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NCF_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_FACTURA" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="COMPANIA_RECEPTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RNC_RECEPTOR" Type="Int64" Nullable="true" />
+          <Property Name="PERSONA_ESPECIFICA_RECEPTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ASUNTO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_GENERAL_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION_DESGLOZADA_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SUBTOTAL_FACTURA" Type="Double" />
+          <Property Name="ITBIS_FACTURA" Type="Double" />
+          <Property Name="TOTAL_FACTURA" Type="Double" />
+          <Property Name="ITBIS_MIN30_FACTURA" Type="Double" />
+          <Property Name="TOTAL_FINAL" Type="Double" />
+        </EntityType>
+        <EntityType Name="NCF">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NCF_TYPENUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NCF_TYPEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER_REGISTER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FACTURACTECAM_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FACTURAS" EntityType="Self.FACTURA" />
+          <EntitySet Name="NCFs" EntityType="Self.NCF" />
+          <EntitySet Name="USER_REGISTER" EntityType="Self.USER_REGISTER" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FACTURADOR_DBModelStoreContainer" CdmEntityContainer="FACTURACTECAM_Entities">
+          <EntitySetMapping Name="FACTURAS">
+            <EntityTypeMapping TypeName="FACTURADOR_DBModel.FACTURA">
+              <MappingFragment StoreEntitySet="FACTURAS">
+                <ScalarProperty Name="TOTAL_FINAL" ColumnName="TOTAL_FINAL" />
+                <ScalarProperty Name="ITBIS_MIN30_FACTURA" ColumnName="ITBIS_MIN30_FACTURA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="USUARIO_CREADOR_FACTURA" ColumnName="USUARIO_CREADOR_FACTURA" />
+                <ScalarProperty Name="FORMATO_FACTURA" ColumnName="FORMATO_FACTURA" />
+                <ScalarProperty Name="NUMERO_FACTURA" ColumnName="NUMERO_FACTURA" />
+                <ScalarProperty Name="TIPO_FACTURA" ColumnName="TIPO_FACTURA" />
+                <ScalarProperty Name="NCF_FACTURA" ColumnName="NCF_FACTURA" />
+                <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+                <ScalarProperty Name="COMPANIA_RECEPTOR" ColumnName="COMPANIA_RECEPTOR" />
+                <ScalarProperty Name="RNC_RECEPTOR" ColumnName="RNC_RECEPTOR" />
+                <ScalarProperty Name="PERSONA_ESPECIFICA_RECEPTOR" ColumnName="PERSONA_ESPECIFICA_RECEPTOR" />
+                <ScalarProperty Name="ASUNTO_FACTURA" ColumnName="ASUNTO_FACTURA" />
+                <ScalarProperty Name="DESCRIPCION_GENERAL_FACTURA" ColumnName="DESCRIPCION_GENERAL_FACTURA" />
+                <ScalarProperty Name="DESCRIPCION_DESGLOZADA_FACTURA" ColumnName="DESCRIPCION_DESGLOZADA_FACTURA" />
+                <ScalarProperty Name="SUBTOTAL_FACTURA" ColumnName="SUBTOTAL_FACTURA" />
+                <ScalarProperty Name="ITBIS_FACTURA" ColumnName="ITBIS_FACTURA" />
+                <ScalarProperty Name="TOTAL_FACTURA" ColumnName="TOTAL_FACTURA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NCFs">
+            <EntityTypeMapping TypeName="FACTURADOR_DBModel.NCF">
+              <MappingFragment StoreEntitySet="NCF">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NCF_TYPENUMBER" ColumnName="NCF_TYPENUMBER" />
+                <ScalarProperty Name="NCF_TYPEDESCRIPTION" ColumnName="NCF_TYPEDESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_REGISTER">
+            <EntityTypeMapping TypeName="FACTURADOR_DBModel.USER_REGISTER">
+              <MappingFragment StoreEntitySet="USER_REGISTER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FACTURACTECAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="FACTURA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USUARIO_CREADOR_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FORMATO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NUMERO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TIPO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NCF_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_FACTURA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="COMPANIA_RECEPTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RNC_RECEPTOR" Type="Int64" />
+    <Property Name="PERSONA_ESPECIFICA_RECEPTOR" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ASUNTO_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION_GENERAL_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION_DESGLOZADA_FACTURA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SUBTOTAL_FACTURA" Type="Double" />
+    <Property Name="ITBIS_FACTURA" Type="Double" />
+    <Property Name="ITBIS_MIN30_FACTURA" Type="Double" />
+    <Property Name="TOTAL_FACTURA" Type="Double" />
+    <Property Name="TOTAL_FINAL" Type="Double" />
+  </EntityType>
+  <EntityType Name="NCF">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NCF_TYPENUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NCF_TYPEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_REGISTER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="FACTURACTECAMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FACTURAS" EntityType="Self.FACTURA" />
+    <EntitySet Name="NCFs" EntityType="Self.NCF" />
+    <EntitySet Name="USER_REGISTER" EntityType="Self.USER_REGISTER" />
+  </EntityContainer>
+</Schema>

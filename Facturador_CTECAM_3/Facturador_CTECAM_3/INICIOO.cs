@@ -23,14 +23,34 @@ public partial class INICIOO : Form
 {
     public INICIOO()
     {
-        InitializeComponent();
-            TestForServer(@"localhost", 1433);
-        Get_Script();
-
-            //PCname = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
+            PCname = System.Environment.GetEnvironmentVariable("COMPUTERNAME");
+            TestForServer(@"localhost\SQLEXPRESS", 1433);
+            Get_Script();
+            InitializeComponent();
+           
     }
 
-    public static string TABLE_FACTURA = (@"CREATE TABLE [dbo].[FACTURAS] (  [ID]  INT IDENTITY (1,1) NOT NULL, [USUARIO_CREADOR_FACTURA]  VARCHAR (MAX) NOT NULL, [FORMATO_FACTURA]  VARCHAR (MAX) NOT NULL, [NUMERO_FACTURA]  VARCHAR (MAX) NOT NULL,  [TIPO_FACTURA] VARCHAR (MAX) NOT NULL,  [NCF_FACTURA] VARCHAR (MAX) NULL,  [FECHA_FACTURA] VARCHAR (MAX) NOT NULL,  [COMPANIA_RECEPTOR]  VARCHAR (MAX) NULL,  [RNC_RECEPTOR] VARCHAR (MAX) NULL,  [PERSONA_ESPECIFICA_RECEPTOR] VARCHAR (MAX) NULL,  [ASUNTO_FACTURA] VARCHAR (MAX) NULL,  [DESCRIPCION_GENERAL_FACTURA]   VARCHAR (MAX) NULL,   [DESCRIPCION_DESGLOZADA_FACTURA]   VARCHAR (MAX) NULL, [SUBTOTAL_FACTURA] FLOAT (53)  NULL,  [ITBIS_FACTURA] FLOAT (53)  NULL,  [TOTAL_FACTURA] FLOAT (53)  NULL,  PRIMARY KEY CLUSTERED ([ID] ASC))");
+        public static string TABLE_FACTURA = (@"CREATE TABLE [dbo].[FACTURAS] (
+    [ID]                             INT           IDENTITY (1, 1) NOT NULL,
+    [USUARIO_CREADOR_FACTURA]        VARCHAR (MAX) NOT NULL,
+    [FORMATO_FACTURA]                VARCHAR (MAX) NOT NULL,
+    [NUMERO_FACTURA]                 VARCHAR (MAX) NOT NULL,
+    [TIPO_FACTURA]                   VARCHAR (MAX) NOT NULL,
+    [NCF_FACTURA]                    VARCHAR (MAX) NULL,
+    [FECHA_FACTURA]                  DATETIME      NOT NULL,
+    [COMPANIA_RECEPTOR]              VARCHAR (MAX) NULL,
+    [RNC_RECEPTOR]                   BIGINT        NULL,
+    [PERSONA_ESPECIFICA_RECEPTOR]    VARCHAR (MAX) NULL,
+    [ASUNTO_FACTURA]                 VARCHAR (MAX) NULL,
+    [DESCRIPCION_GENERAL_FACTURA]    VARCHAR (MAX) NULL,
+    [DESCRIPCION_DESGLOZADA_FACTURA] VARCHAR (MAX) NULL,
+    [SUBTOTAL_FACTURA]               FLOAT (53)    NULL,
+    [ITBIS_FACTURA]                  FLOAT (53)    NULL,
+    [ITBIS_MIN30_FACTURA]            FLOAT (53)    NULL,
+    [TOTAL_FACTURA]                  FLOAT (53)    NULL,
+    [TOTAL_FINAL]                    FLOAT (53)    NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);");
     public static string TABLE_USER = (@"CREATE TABLE [dbo].[USER_REGISTER] ([ID] INT IDENTITY (1,1) NOT NULL, [Username] VARCHAR(MAX) NOT NULL, [Password] VARCHAR(MAX) NOT NULL, PRIMARY KEY CLUSTERED ([ID] ASC))");
         public static string TABLE_NCF = (@"CREATE TABLE [dbo].[NCF] (
         [Id]                  INT           IDENTITY (1, 1) NOT NULL,
@@ -50,13 +70,13 @@ public partial class INICIOO : Form
         INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (10, N'16', N'Exportaciones')
         INSERT INTO [dbo].[NCF] ([Id], [NCF_TYPENUMBER], [NCF_TYPEDESCRIPTION]) VALUES (11, N'17', N'Pagos al Exterior')
         SET IDENTITY_INSERT [dbo].[NCF] OFF");
-        public static string conStr = @"packet size=4096;integrated security=SSPI;" + @"Server=localhost\SQLEXPRESS;persist security info=False;" + "initial catalog=FACTURACTECAM4";
+        public static string conStr = @"packet size=4096;integrated security=SSPI;" + @"Server=localhost\SQLEXPRESS;persist security info=False;" + "initial catalog=FACTURADOR_DB";
         public static string conStr2 = @"Server=localhost\SQLEXPRESS;" +
                                         "Trusted_Connection=yes;" +
                                         "Database=master;" +
                                         "persist security info=False;" +
                                         "Connection timeout=30";//"packet size=4096;integrated security=SSPI;" + "data source=\"(local)\";" + "initial catalog=master";
-        public static string hostname;
+        public static string PCname;
         public static string username;
     public static string password;
         public static string resourceName;
@@ -85,17 +105,15 @@ public partial class INICIOO : Form
         }
         public static string GetDbCreationQuery()
     {
-        string dbName = "FACTURACTECAM4";
+        string dbName = "FACTURADOR_DB";
         string query = "CREATE DATABASE " + dbName + ";";
         return query;
     }
-    public static List<string> GetListOfDBNames1(string connection, string hostName2)
+    public static List<string> GetListOfDBNames1(string connection)
     {
         using (SqlConnection sqlConn = new SqlConnection(connection))
         {
-               
-                hostname= Environment.MachineName;
-                sqlConn.Open();
+            sqlConn.Open();
             DataTable tblDatabases = sqlConn.GetSchema("Databases");
             sqlConn.Close();
 
@@ -111,31 +129,31 @@ public partial class INICIOO : Form
             return Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName);
         }
         public static void User_LOGIN()
-    {
-        System.Data.SqlClient.SqlConnection sqlConnection2 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
-
-        SqlCommand cmd2 = new SqlCommand();
-        string v = $"SELECT * FROM user_register WHERE [Username]='" + username + "' AND [Password]='" + password + "'";
-        cmd2.CommandType = System.Data.CommandType.Text;
-        cmd2.CommandText = v;
-        cmd2.Connection = sqlConnection2;
-
-        SqlDataAdapter GeoDrillLogin = new SqlDataAdapter(cmd2);
-        DataSet result = new DataSet();
-        sqlConnection2.Open();
-        GeoDrillLogin.Fill(result, "Login");
-        sqlConnection2.Close();
-
-        if (result.Tables["Login"].Rows.Count > 0)
         {
-            PROGRAMAA settingsForm = new PROGRAMAA();
-            settingsForm.Show();
+            System.Data.SqlClient.SqlConnection sqlConnection2 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
+
+            SqlCommand cmd2 = new SqlCommand();
+            string v = $"SELECT * FROM user_register WHERE [Username]='" + username + "' AND [Password]='" + password + "'";
+            cmd2.CommandType = System.Data.CommandType.Text;
+            cmd2.CommandText = v;
+            cmd2.Connection = sqlConnection2;
+
+            SqlDataAdapter GeoDrillLogin = new SqlDataAdapter(cmd2);
+            DataSet result = new DataSet();
+            sqlConnection2.Open();
+            GeoDrillLogin.Fill(result, "Login");
+            sqlConnection2.Close();
+
+            if (result.Tables["Login"].Rows.Count > 0)
+            {
+                PROGRAMAA settingsForm = new PROGRAMAA();
+                settingsForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Credenciales invalidas");
+            }
         }
-        else
-        {
-            MessageBox.Show("Credenciales invalidas");
-        }
-    }
     public static void USER_REGISTER()
     {
         System.Data.SqlClient.SqlConnection sqlConnection1 = new System.Data.SqlClient.SqlConnection(INICIOO.conStr);
@@ -153,15 +171,16 @@ public partial class INICIOO : Form
         MessageBox.Show("Agregado!");
     }
     public static void Get_Script()
-    {
-            if (!TestForServer(@"localhost", 1433))
-            {
-                string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-                string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
-                resourceName = "SQL2019_SSEI_Expr.exe";
-                System.Diagnostics.Process.Start(resourcesFolderPath);
-                MessageBox.Show("Install COMPLETED!");
-            }
+        { 
+    //{
+    //        if (!TestForServer(@"SQLEXPRESS", 1433))
+    //        {
+    //            string appFolderPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+    //            string resourcesFolderPath = Path.Combine(Directory.GetParent(appFolderPath).Parent.FullName, @"Resources\SQL2019-SSEI-Expr.exe");
+    //            resourceName = "SQL2019_SSEI_Expr.exe";
+    //            System.Diagnostics.Process.Start(resourcesFolderPath);
+    //            MessageBox.Show("Install COMPLETED!");
+    //        }
                 string connectionString = conStr;
         string connectionString2 = conStr2;
         var conn2 = new SqlConnection(connectionString2);
@@ -173,11 +192,11 @@ public partial class INICIOO : Form
         var command4 = new SqlCommand(TABLE_NCF, conn);
         var command5 = new SqlCommand(INSERT_NCF, conn);
 
-            GetListOfDBNames1(connectionString2, hostname);
+            GetListOfDBNames1(connectionString2);
 
             try
             {
-                if (!lstDBName.Contains("FACTURACTECAM4"))
+                if (!lstDBName.Contains("FACTURADOR_DB"))
                 {
                     conn2.Open();
                     command.ExecuteNonQuery();

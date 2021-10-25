@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FACTURACTECAMModelStoreContainer" CdmEntityContainer="FACTURACTECAMEntities">
+    <EntitySetMapping Name="FACTURAS">
+      <EntityTypeMapping TypeName="FACTURACTECAMModel.FACTURA">
+        <MappingFragment StoreEntitySet="FACTURAS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="USUARIO_CREADOR_FACTURA" ColumnName="USUARIO_CREADOR_FACTURA" />
+          <ScalarProperty Name="FORMATO_FACTURA" ColumnName="FORMATO_FACTURA" />
+          <ScalarProperty Name="NUMERO_FACTURA" ColumnName="NUMERO_FACTURA" />
+          <ScalarProperty Name="TIPO_FACTURA" ColumnName="TIPO_FACTURA" />
+          <ScalarProperty Name="NCF_FACTURA" ColumnName="NCF_FACTURA" />
+          <ScalarProperty Name="FECHA_FACTURA" ColumnName="FECHA_FACTURA" />
+          <ScalarProperty Name="COMPANIA_RECEPTOR" ColumnName="COMPANIA_RECEPTOR" />
+          <ScalarProperty Name="RNC_RECEPTOR" ColumnName="RNC_RECEPTOR" />
+          <ScalarProperty Name="PERSONA_ESPECIFICA_RECEPTOR" ColumnName="PERSONA_ESPECIFICA_RECEPTOR" />
+          <ScalarProperty Name="ASUNTO_FACTURA" ColumnName="ASUNTO_FACTURA" />
+          <ScalarProperty Name="DESCRIPCION_GENERAL_FACTURA" ColumnName="DESCRIPCION_GENERAL_FACTURA" />
+          <ScalarProperty Name="DESCRIPCION_DESGLOZADA_FACTURA" ColumnName="DESCRIPCION_DESGLOZADA_FACTURA" />
+          <ScalarProperty Name="SUBTOTAL_FACTURA" ColumnName="SUBTOTAL_FACTURA" />
+          <ScalarProperty Name="ITBIS_FACTURA" ColumnName="ITBIS_FACTURA" />
+          <ScalarProperty Name="ITBIS_MIN30_FACTURA" ColumnName="ITBIS_MIN30_FACTURA" />
+          <ScalarProperty Name="TOTAL_FACTURA" ColumnName="TOTAL_FACTURA" />
+          <ScalarProperty Name="TOTAL_FINAL" ColumnName="TOTAL_FINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCFs">
+      <EntityTypeMapping TypeName="FACTURACTECAMModel.NCF">
+        <MappingFragment StoreEntitySet="NCF">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NCF_TYPENUMBER" ColumnName="NCF_TYPENUMBER" />
+          <ScalarProperty Name="NCF_TYPEDESCRIPTION" ColumnName="NCF_TYPEDESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_REGISTER">
+      <EntityTypeMapping TypeName="FACTURACTECAMModel.USER_REGISTER">
+        <MappingFragment StoreEntitySet="USER_REGISTER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

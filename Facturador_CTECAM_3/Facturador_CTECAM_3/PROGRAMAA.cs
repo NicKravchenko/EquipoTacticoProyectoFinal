@@ -26,12 +26,12 @@ namespace Facturador_CTECAM_3
         public static string[] TIPOfacTura;
         public static string[] columnasGridView = { "ID", "CREADOR", "FORMATO", "NUMERO", "TIPO", "NCF", "FECHA", "COMPAÑIA", "RNC COMPAÑIA", "PERSONA", "ASUNTO", "GENERAL", "DESGLOZADA", "SUBTOTAL", "ITBIS", "ITBIS -30%", "TOTAL", "TOTAL FINAL" };
         public static FACTURA factura;
-        public static FACTURACTECAMEntities db = new FACTURACTECAMEntities();
+        public static FACTURACTECAM_Entities db = new FACTURACTECAM_Entities();
         public PROGRAMAA()
         {
             InitializeComponent();
             dateTimePicker1.Value = DateTime.Today;
-           // getComboBoxTipo();
+            getComboBoxTipo();
         }
         public void GetNUMandNCF()
         {
@@ -74,7 +74,7 @@ namespace Facturador_CTECAM_3
             }
             TableFacturasPerFormat();
         }
-        /*
+       
         public void getComboBoxTipo()
         {
             var fillcombobox = db.NCFs.ToList();
@@ -82,7 +82,7 @@ namespace Facturador_CTECAM_3
             TipoFacturacomboBox1.DisplayMember = "NCF_TYPEDESCRIPTION";
             TipoFacturacomboBox1.DataSource = fillcombobox;
         }
-        */
+        
         public void TableFacturasPerFormat()
         {
             var FacturasToList = db.FACTURAS.Where(a => a.FORMATO_FACTURA == Formatfactura && a.TIPO_FACTURA == Typefactura).ToList();
@@ -106,7 +106,7 @@ namespace Facturador_CTECAM_3
 
             WordFactura.Bookmarks[8].Range.Text = factura.NUMERO_FACTURA; //numero   
             WordFactura.Bookmarks[7].Range.Text = factura.NCF_FACTURA; //ncf
-            WordFactura.Bookmarks[4].Range.Text = factura.FECHA_FACTURA.ToShortDateString(); //fecha
+            WordFactura.Bookmarks[4].Range.Text = (factura.FECHA_FACTURA.ToShortDateString()); //fecha
             WordFactura.Bookmarks[2].Range.Text = factura.COMPANIA_RECEPTOR;//para
             WordFactura.Bookmarks[11].Range.Text = Convert.ToString(factura.RNC_RECEPTOR);//RNC para
             WordFactura.Bookmarks[9].Range.Text = factura.PERSONA_ESPECIFICA_RECEPTOR;//persona directa
